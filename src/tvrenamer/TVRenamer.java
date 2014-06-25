@@ -15,31 +15,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class TVRenamer {
     public static void main(String[] args) {
-//        File file = new File("Demons.mkv");
-//        File copy = new File("Derpsons.mkv");
-//        
-//        InputStream  reader = new FileInputStream(file);
-//        OutputStream writer = new FileOutputStream(copy);
-//
-//        byte[] buffer = new byte[1024];
-//
-//        int length;
-//        while((length = reader.read(buffer)) > 0)
-//            writer.write(buffer, 0, length);
-//
-//        reader.close();
-//        writer.close();
-//        System.out.println("Done!");
-        
-//        try {
-//            File file = new File("Demons.mkv");
-//            file.renameTo(new File("Derpsons.mkv"));
-//            System.out.println("Done!");
-//        } catch(Exception ex) {
-//            System.out.println(ex.getMessage());
-//        }
-        
-        
         setLookAndFeel();
 
         java.awt.EventQueue.invokeLater(new Runnable() {

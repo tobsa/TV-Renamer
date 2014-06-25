@@ -47,7 +47,7 @@ public class MainFrame extends JFrame {
         listEpisodeTitles = new javax.swing.JList<String>();
         panelEpisodeFormat = new javax.swing.JPanel();
         textfieldEpisodeFormat = new javax.swing.JTextField();
-        buttonChooseFiles = new javax.swing.JButton();
+        buttonUpdate = new javax.swing.JButton();
         panelIMDBLink = new javax.swing.JPanel();
         textfieldIMDBLink = new javax.swing.JTextField();
         buttonFetch = new javax.swing.JButton();
@@ -55,11 +55,11 @@ public class MainFrame extends JFrame {
         buttonExit = new javax.swing.JButton();
         buttonMoveUp = new javax.swing.JButton();
         buttonMoveDown = new javax.swing.JButton();
-        buttonUpdate = new javax.swing.JButton();
         buttonRemove = new javax.swing.JButton();
         buttonAdd = new javax.swing.JButton();
         buttonEdit = new javax.swing.JButton();
         buttonRemoveEpisode = new javax.swing.JButton();
+        buttonChooseFiles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TVRenamer");
@@ -79,7 +79,7 @@ public class MainFrame extends JFrame {
             panelFullEpisodeNamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFullEpisodeNamesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelFullEpisodeNamesLayout.setVerticalGroup(
@@ -124,12 +124,10 @@ public class MainFrame extends JFrame {
 
         panelEpisodeFormat.setBorder(javax.swing.BorderFactory.createTitledBorder("Episode Format"));
 
-        textfieldEpisodeFormat.setText("Big.Bang.Theory.S01E#.?.DVDRip.Xvid.FOV.avi");
-
-        buttonChooseFiles.setText("Choose Files...");
-        buttonChooseFiles.addActionListener(new java.awt.event.ActionListener() {
+        buttonUpdate.setText("Update");
+        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonChooseFilesActionPerformed(evt);
+                buttonUpdateActionPerformed(evt);
             }
         });
 
@@ -139,9 +137,9 @@ public class MainFrame extends JFrame {
             panelEpisodeFormatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEpisodeFormatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textfieldEpisodeFormat)
+                .addComponent(textfieldEpisodeFormat, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonChooseFiles)
+                .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelEpisodeFormatLayout.setVerticalGroup(
@@ -150,13 +148,11 @@ public class MainFrame extends JFrame {
                 .addContainerGap()
                 .addGroup(panelEpisodeFormatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textfieldEpisodeFormat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonChooseFiles))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(buttonUpdate))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         panelIMDBLink.setBorder(javax.swing.BorderFactory.createTitledBorder("IMDB Link"));
-
-        textfieldIMDBLink.setText("http://www.imdb.com/title/tt0898266/episodes?season=1");
 
         buttonFetch.setText("Fetch");
         buttonFetch.addActionListener(new java.awt.event.ActionListener() {
@@ -215,13 +211,6 @@ public class MainFrame extends JFrame {
             }
         });
 
-        buttonUpdate.setText("Update");
-        buttonUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonUpdateActionPerformed(evt);
-            }
-        });
-
         buttonRemove.setText("Remove");
         buttonRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,23 +240,29 @@ public class MainFrame extends JFrame {
             }
         });
 
+        buttonChooseFiles.setText("Choose Files...");
+        buttonChooseFiles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonChooseFilesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129)
-                        .addComponent(buttonRemoveEpisode, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelEpisodeFormat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(panelFullEpisodeNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(panelEpisodeFormat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(121, 121, 121)
+                            .addComponent(buttonRemoveEpisode, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(121, 121, 121)
+                            .addComponent(buttonChooseFiles)))
+                    .addComponent(panelFullEpisodeNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonMoveDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -299,10 +294,10 @@ public class MainFrame extends JFrame {
                         .addComponent(panelFullEpisodeNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonExit)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(buttonRemoveEpisode)
-                                .addComponent(buttonUpdate))))
+                                .addComponent(buttonExit)
+                                .addComponent(buttonRemoveEpisode))
+                            .addComponent(buttonChooseFiles)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelEpisodeTitles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -316,7 +311,7 @@ public class MainFrame extends JFrame {
                         .addComponent(buttonMoveUp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonMoveDown)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -355,7 +350,7 @@ public class MainFrame extends JFrame {
     private void buttonChooseFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChooseFilesActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setMultiSelectionEnabled(true);
-        fc.setCurrentDirectory(new File("C:\\Users\\Tobias\\Desktop\\bbt"));
+//        fc.setCurrentDirectory(new File(""));
         
         if(fc.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
            episodeManager.addEpisodes(fc.getSelectedFiles());
