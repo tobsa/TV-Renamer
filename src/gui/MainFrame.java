@@ -3,11 +3,13 @@ package gui;
 import domain.Episode;
 import domain.EpisodeManager;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.prefs.Preferences;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -349,22 +351,23 @@ public class MainFrame extends JFrame {
     }//GEN-LAST:event_buttonFetchActionPerformed
 
     private void buttonChooseFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChooseFilesActionPerformed
+        Preferences prefs = Preferences.userRoot().node(getClass().getName());
+                
         JFileChooser fc = new JFileChooser();
+        fc.setCurrentDirectory(new File(prefs.get("LAST_USED_FOLDER", "")));
         fc.setMultiSelectionEnabled(true);
-        
+            
         FileFilter filter = new FileNameExtensionFilter("Video files", new String[] {"Avi", "mkv", "wmv"});
-        
         fc.addChoosableFileFilter(filter);
         fc.setFileFilter(filter);
-        
-//        fc.setCurrentDirectory(new File(""));
-        
+                
         if(fc.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
            episodeManager.addEpisodes(fc.getSelectedFiles());
            episodeManager.setEpisodeFormat(textfieldEpisodeFormat.getText());          
-           
            episodeManager.setEpisodeFormat(textfieldEpisodeFormat.getText()); 
            updateList();
+           
+           prefs.put("LAST_USED_FOLDER", fc.getCurrentDirectory().getAbsolutePath());
         }
     }//GEN-LAST:event_buttonChooseFilesActionPerformed
 
