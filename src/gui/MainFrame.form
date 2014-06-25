@@ -28,15 +28,17 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jButton4" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="buttonExit" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                      <Component id="buttonRemoveEpisode" min="-2" pref="89" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="buttonUpdate" min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="panelEpisodeFormat" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Component id="panelFullEpisodeNames" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="panelEpisodeFormat" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -54,7 +56,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonRemove" min="-2" pref="89" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jButton2" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="buttonSave" min="-2" pref="100" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -73,28 +75,33 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="panelFullEpisodeNames" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="buttonExit" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="buttonRemoveEpisode" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="buttonUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="panelEpisodeTitles" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="buttonSave" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonEdit" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonRemove" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buttonAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="buttonUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="188" max="-2" attributes="0"/>
                       <Component id="buttonMoveUp" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="buttonMoveDown" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -123,8 +130,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane4" pref="250" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane4" min="-2" pref="378" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -142,7 +149,6 @@
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>
                 </Property>
-                <Property name="selectionMode" type="int" value="0"/>
               </Properties>
               <Events>
                 <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listFullEpisodeNamesValueChanged"/>
@@ -178,8 +184,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="250" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="378" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -200,6 +206,7 @@
                 <Property name="selectionMode" type="int" value="0"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="listEpisodeTitlesMouseClicked"/>
                 <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="listEpisodeTitlesValueChanged"/>
               </Events>
               <AuxValues>
@@ -247,7 +254,7 @@
       <SubComponents>
         <Component class="javax.swing.JTextField" name="textfieldEpisodeFormat">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Big.Bang.Theory.S01E#.?.DVDRip.Xvid.FOV"/>
+            <Property name="text" type="java.lang.String" value="Big.Bang.Theory.S01E#.?.DVDRip.Xvid.FOV.avi"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="buttonChooseFiles">
@@ -310,16 +317,22 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="buttonSave">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSaveActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="buttonExit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Exit"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonExitActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonMoveUp">
       <Properties>
@@ -367,6 +380,15 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEditActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonRemoveEpisode">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Remove"/>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonRemoveEpisodeActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

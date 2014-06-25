@@ -51,21 +51,21 @@ public class MainFrame extends JFrame {
         panelIMDBLink = new javax.swing.JPanel();
         textfieldIMDBLink = new javax.swing.JTextField();
         buttonFetch = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buttonSave = new javax.swing.JButton();
+        buttonExit = new javax.swing.JButton();
         buttonMoveUp = new javax.swing.JButton();
         buttonMoveDown = new javax.swing.JButton();
         buttonUpdate = new javax.swing.JButton();
         buttonRemove = new javax.swing.JButton();
         buttonAdd = new javax.swing.JButton();
         buttonEdit = new javax.swing.JButton();
+        buttonRemoveEpisode = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TVRenamer");
 
         panelFullEpisodeNames.setBorder(javax.swing.BorderFactory.createTitledBorder("Full Episode Names"));
 
-        listFullEpisodeNames.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listFullEpisodeNames.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listFullEpisodeNamesValueChanged(evt);
@@ -86,13 +86,18 @@ public class MainFrame extends JFrame {
             panelFullEpisodeNamesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFullEpisodeNamesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelEpisodeTitles.setBorder(javax.swing.BorderFactory.createTitledBorder("Episode Titles"));
 
         listEpisodeTitles.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listEpisodeTitles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listEpisodeTitlesMouseClicked(evt);
+            }
+        });
         listEpisodeTitles.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listEpisodeTitlesValueChanged(evt);
@@ -113,13 +118,13 @@ public class MainFrame extends JFrame {
             panelEpisodeTitlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEpisodeTitlesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panelEpisodeFormat.setBorder(javax.swing.BorderFactory.createTitledBorder("Episode Format"));
 
-        textfieldEpisodeFormat.setText("Big.Bang.Theory.S01E#.?.DVDRip.Xvid.FOV");
+        textfieldEpisodeFormat.setText("Big.Bang.Theory.S01E#.?.DVDRip.Xvid.FOV.avi");
 
         buttonChooseFiles.setText("Choose Files...");
         buttonChooseFiles.addActionListener(new java.awt.event.ActionListener() {
@@ -181,10 +186,20 @@ public class MainFrame extends JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton2.setText("Save");
+        buttonSave.setText("Save");
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Exit");
-        jButton4.setToolTipText("");
+        buttonExit.setText("Exit");
+        buttonExit.setToolTipText("");
+        buttonExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExitActionPerformed(evt);
+            }
+        });
 
         buttonMoveUp.setText("Move Up");
         buttonMoveUp.addActionListener(new java.awt.event.ActionListener() {
@@ -228,6 +243,14 @@ public class MainFrame extends JFrame {
             }
         });
 
+        buttonRemoveEpisode.setText("Remove");
+        buttonRemoveEpisode.setToolTipText("");
+        buttonRemoveEpisode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRemoveEpisodeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,13 +259,15 @@ public class MainFrame extends JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonExit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(129, 129, 129)
+                        .addComponent(buttonRemoveEpisode, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(buttonUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelEpisodeFormat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(panelFullEpisodeNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelEpisodeFormat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(panelFullEpisodeNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(buttonMoveDown, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -258,7 +283,7 @@ public class MainFrame extends JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(buttonSave, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -273,22 +298,25 @@ public class MainFrame extends JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelFullEpisodeNames, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonExit)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(buttonRemoveEpisode)
+                                .addComponent(buttonUpdate))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelEpisodeTitles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
+                            .addComponent(buttonSave)
                             .addComponent(buttonEdit)
                             .addComponent(buttonRemove)
-                            .addComponent(buttonAdd)
-                            .addComponent(buttonUpdate)))
+                            .addComponent(buttonAdd)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
+                        .addGap(188, 188, 188)
                         .addComponent(buttonMoveUp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonMoveDown)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -412,32 +440,61 @@ public class MainFrame extends JFrame {
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void listFullEpisodeNamesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listFullEpisodeNamesValueChanged
-        int index = listFullEpisodeNames.getSelectedIndex();
         listEpisodeTitles.clearSelection();
-        listFullEpisodeNames.setSelectedIndex(index);
     }//GEN-LAST:event_listFullEpisodeNamesValueChanged
 
     private void listEpisodeTitlesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listEpisodeTitlesValueChanged
-        int index = listEpisodeTitles.getSelectedIndex();
         listFullEpisodeNames.clearSelection();
-        listEpisodeTitles.setSelectedIndex(index);
     }//GEN-LAST:event_listEpisodeTitlesValueChanged
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
-        
+        AddEpisodeTitleDialog dialog = new AddEpisodeTitleDialog(MainFrame.this, episodeManager);
+        episodeManager.setEpisodeFormat(textfieldEpisodeFormat.getText());
+        updateList();        
     }//GEN-LAST:event_buttonAddActionPerformed
+
+    private void buttonRemoveEpisodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveEpisodeActionPerformed
+        int[] indices = listFullEpisodeNames.getSelectedIndices();
+        if(indices.length == 0)
+            return;
+        
+        episodeManager.removeEpisode(indices);
+        episodeManager.setEpisodeFormat(textfieldEpisodeFormat.getText());
+        updateList();   
+    }//GEN-LAST:event_buttonRemoveEpisodeActionPerformed
+
+    private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_buttonExitActionPerformed
+
+    private void listEpisodeTitlesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listEpisodeTitlesMouseClicked
+        if(evt.getClickCount() == 2) {
+            int index = listEpisodeTitles.getSelectedIndex();
+            if(index == -1)
+                return;
+
+            EpisodeEditDialog dialog = new EpisodeEditDialog(MainFrame.this, index, listEpisodeTitles.getSelectedValue(), episodeManager);
+            episodeManager.setEpisodeFormat(textfieldEpisodeFormat.getText());          
+            updateList();
+        }
+    }//GEN-LAST:event_listEpisodeTitlesMouseClicked
+
+    private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
+        episodeManager.renameAll();
+    }//GEN-LAST:event_buttonSaveActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAdd;
     private javax.swing.JButton buttonChooseFiles;
     private javax.swing.JButton buttonEdit;
+    private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonFetch;
     private javax.swing.JButton buttonMoveDown;
     private javax.swing.JButton buttonMoveUp;
     private javax.swing.JButton buttonRemove;
+    private javax.swing.JButton buttonRemoveEpisode;
+    private javax.swing.JButton buttonSave;
     private javax.swing.JButton buttonUpdate;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JList<String> listEpisodeTitles;

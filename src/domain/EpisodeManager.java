@@ -7,11 +7,10 @@ import java.util.List;
 public class EpisodeManager {
     private List<Episode> episodes = new ArrayList();
     private List<String> episodeTitles = new ArrayList();
-    private int currentEpisode = 1;
     
     public void addEpisodes(File[] files) {
         for(File file : files)
-            episodes.add(new Episode(file, currentEpisode++));
+            episodes.add(new Episode(file, episodes.size() + 1));
     }
     
     public void addEpisodeTitle(String title) {
@@ -30,6 +29,19 @@ public class EpisodeManager {
         return episodeTitles;
     }
     
+    public void removeEpisode(int[] indices) {
+        List<Episode> episodesToRemove = new ArrayList();
+        
+        for(int index : indices)
+            episodesToRemove.add(episodes.get(index));
+        
+        episodes.removeAll(episodesToRemove);
+        
+        int number = 1;
+        for(Episode episode : episodes)
+            episode.setNumber(number++);
+    }
+        
     public void removeEpisodeTitle(int index) {
         episodeTitles.remove(index);
     }
@@ -68,6 +80,11 @@ public class EpisodeManager {
             episodeName = episodeName.replaceAll("\\?", i < episodeTitles.size() ? episodeTitles.get(i++) : "?");
             episode.setName(episodeName);
         }
+    }
+    
+    public void renameAll() {
+        for(Episode episode : episodes) 
+            episode.rename();
     }
 }
  

@@ -20,14 +20,14 @@ public class ListEpisodeCellRenderer implements ListCellRenderer {
         
         JLabel label = new JLabel(episode.getName());
         label.setOpaque(true);
-        label.setBackground(new Color(127,255,0));
+        label.setBackground(new Color(127,255,0,100));
         
         if(!episode.getName().isEmpty())
-            label.setBorder(new EmptyBorder(2, 2, 2, 2));
+            label.setBorder(new EmptyBorder(2, 10, 2, 10));
         
         JPanel panel = new JPanel(new BorderLayout());
         panel.add(label);
-        panel.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(0,0,0,0), new TitledBorder("Episode " + episode.getNumber() + " - " + episode.getOriginalName())));
+        panel.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(5,5,5,5), new TitledBorder("Episode " + episode.getNumber() + " - " + episode.getOriginalName())));
         
         if(isSelected)
             panel.setBackground(new Color(51, 153, 255));

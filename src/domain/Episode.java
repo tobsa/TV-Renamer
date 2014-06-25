@@ -1,6 +1,8 @@
 package domain;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Episode {
     private File file;
@@ -41,6 +43,15 @@ public class Episode {
     
     public void setNumber(int number) {
         this.number = number;
+    }
+    
+    public void rename() {
+        try {
+            file.renameTo(new File(file.getParent() + "\\" + name));
+                        
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
     @Override
