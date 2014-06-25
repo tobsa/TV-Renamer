@@ -3,7 +3,6 @@ package gui;
 import domain.Episode;
 import domain.EpisodeManager;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
@@ -13,6 +12,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainFrame extends JFrame {
     private EpisodeManager episodeManager = new EpisodeManager();
@@ -350,6 +351,12 @@ public class MainFrame extends JFrame {
     private void buttonChooseFilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChooseFilesActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setMultiSelectionEnabled(true);
+        
+        FileFilter filter = new FileNameExtensionFilter("Video files", new String[] {"Avi", "mkv", "wmv"});
+        
+        fc.addChoosableFileFilter(filter);
+        fc.setFileFilter(filter);
+        
 //        fc.setCurrentDirectory(new File(""));
         
         if(fc.showOpenDialog(MainFrame.this) == JFileChooser.APPROVE_OPTION) {
